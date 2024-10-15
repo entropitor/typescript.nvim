@@ -8,8 +8,8 @@
 # ARCHIVED
 
 typescript.nvim is now archived and will no longer receive updates. Please see
-[this issue](https://github.com/jose-elias-alvarez/typescript.nvim/issues/80) for
-details.
+[this issue](https://github.com/jose-elias-alvarez/typescript.nvim/issues/80)
+for details.
 
 # typescript.nvim
 
@@ -46,7 +46,7 @@ require("typescript").setup({
 
 Note that command-specific configuration affects Vim commands, not the Lua API.
 
-**Important:** if you have `require("lspconfig").tsserver.setup({})` anywhere in
+**Important:** if you have `require("lspconfig").ts_ls.setup({})` anywhere in
 your config, make sure to remove it and pass any options you were using under
 the `server` key. lspconfig doesn't allow more than one setup call, so your
 config will not work as expected.
@@ -56,7 +56,7 @@ config will not work as expected.
 ### Commands
 
 The plugin exposes Vim commands as well as a Lua API. Vim commands are
-buffer-local, so you'll have access to them once `tsserver` has attached.
+buffer-local, so you'll have access to them once `ts_ls` has attached.
 
 The following commands are async by default, but you can make them run
 synchronously by adding a `!` to Vim commands or passing `{ sync = true }` to
@@ -142,8 +142,11 @@ require("null_ls").setup({
 ## FAQ
 
 - How do I enable inlay hints?
-  - Ensure you have installed Neovim >= v0.10.0. Inlay hints will not work in previous versions.
-  - Enable the `inlay_hint` option in your `on_attach` function **AND** set your desired settings in the server setup, e.g.:
+  - Ensure you have installed Neovim >= v0.10.0. Inlay hints will not work in
+    previous versions.
+  - Enable the `inlay_hint` option in your `on_attach` function **AND** set your
+    desired settings in the server setup, e.g.:
+
 ```lua
 require("typescript").setup({
   server = {
